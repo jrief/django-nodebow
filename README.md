@@ -2,11 +2,12 @@
 Manage bower components and node packages using Django
 ======================================================
 
-Many Django applications require some JavaScript packages, which usually are not available on PyPI
-and thus can't be installed through **pip**. A common solution to this problem is, to copy these
-JavaScript packages into the Django application. This however is a bad solution, since then these
-packages have to be revisioned twice. By adding the file(s) ``bower.json`` and/or ``package.json``
-to each Django application, this problem can be solved in a portable and elegant manner.
+Many Django applications require some JavaScript packages, which usually are not available on
+[PyPI](https://pypi.python.org/pypi) and thus can't be installed through **pip**. A common
+solution to this problem is, to copy these JavaScript packages into the Django application.
+This however is a bad solution, since then these packages have to be revisioned twice. By
+adding the file(s) ``bower.json`` and/or ``package.json`` to each Django application, this
+problem can be solved in a portable and elegant manner.
 
 With **django-nodebow** manage your JavaScript dependencies from *all* of your Django projects
 centrally for the required bower components and/or node packages, simply through:
@@ -24,9 +25,9 @@ packages it requires itself, without adding these to its own Git repository.
 Installation
 ============
 
-Install (NodeJS)[http://nodejs.org/download/].
+Install [NodeJS](http://nodejs.org/download/).
 
-Into your global NodeJS packages folder, install (bower)[http://bower.io/]:
+Into your global NodeJS packages folder, install [bower](http://bower.io/):
 
 ```
 sudo npm install -g bower
@@ -111,6 +112,8 @@ then, when accessing the main file, use
 
 in any of your Django templates.
 
+
+As of version 0.0.1 ``./manage npm install``, currently does not work.
 
 Difference between Bower and NPM
 ================================
