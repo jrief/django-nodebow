@@ -17,7 +17,7 @@ class Bower(object):
     def __call__(self, function, *args):
         try:
             self.compiled_js.call(function, *args)
-        except execjs.ProgramError as err:
+        except execjs.Error as err:
             raise CommandError("During 'bower {0}': {1}".format(function, err))
 
 
@@ -39,10 +39,8 @@ class Command(BaseCommand):
             dependencies = ['{0}#{1}'.format(p, v) for p, v in settings.get('dependencies', {}).items()]
             if self.verbosity > 0:
                 self.stdout.write("Packages for {0}: {1}".format(app, ', '.join(dependencies)))
-            retval = self.bower('install', dependencies)
-            print retval
+            self.bower('install', dependencies)
             if self.development:
                 dependencies = ['{0}#{1}'.format(p, v) for p, v in settings.get('devDependencies', {}).items()]
-                retval = self.bower('install', dependencies)
-                print retval
+                self.bower('install', dependencies)
         os.chdir(curdir)
