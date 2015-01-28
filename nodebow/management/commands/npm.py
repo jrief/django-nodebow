@@ -10,6 +10,7 @@ class NPM(object):
     compiled_js = execjs.compile("""
     var npm = require('npm');
     function install(packages) {
+        // currently broken, because I don't know how to find .npmrc
         return npm.commands.install(packages);
     }
     """)
@@ -23,6 +24,7 @@ class NPM(object):
 
 class Command(BaseCommand):
     handler = 'npm'
+    json_file = 'packages.json'
     help = "Manage dependencies of node modules for all installed Django apps."
 
     def handle(self, *args, **options):
