@@ -40,9 +40,6 @@ pip install django-nodebow
 pip install PyExecJS
 ```
 
-Add ``bower_components/`` and ``node_packages/`` to the file ``.gitignore`` found in the root of
-your Django project.
-
 
 Configuration
 =============
@@ -67,9 +64,9 @@ STATICFILES_FINDERS = (
 Optional settings
 -----------------
 
-By default, the folders ``bower_components`` and/or ``node_packages`` are placed into the root
-of your Django project. By changing ``PROJECT_PATH``, these folder are placed below that
-location.
+By default, the folders ``bower_components`` and/or ``node_packages`` are placed into the
+``STATIC_ROOT`` of your Django project. Therefore make sure, this directory is available, even
+during development.
 
 **NPM** searches for its global node modules in a folder, which can be set using the environment
 variable ``NODE_PATH``. This can be overridden by a settings variable with the same name. If both
