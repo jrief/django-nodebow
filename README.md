@@ -1,5 +1,5 @@
 ======================================================
-Manage bower components and node packages using Django
+Manage Bower components and Node packages using Django
 ======================================================
 
 Many Django applications require some JavaScript packages, which usually are not available on
