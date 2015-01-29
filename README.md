@@ -30,7 +30,7 @@ Install [NodeJS](http://nodejs.org/download/).
 Into your global NodeJS packages folder, install [bower](http://bower.io/):
 
 ```
-sudo npm install -g bower
+sudo npm install -g bower inquirer
 ```
 
 Into your Python virtualenv:

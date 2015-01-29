@@ -11,5 +11,6 @@ elif os.getenv('NODE_PATH') is None:
     _node_path = subprocess.check_output('npm root -g', shell=True).strip()
     os.putenv('NODE_PATH', _node_path)
 
-if not hasattr(settings, 'STATIC_ROOT'):
-    raise ImproperlyConfigured("The settings variable 'STATIC_ROOT' must point onto a directory.")
+NODEBOW_ROOT = getattr(settings, 'NODEBOW_ROOT', getattr(settings, 'STATIC_ROOT', None))
+if not NODEBOW_ROOT:
+    raise ImproperlyConfigured("The settings variable 'STATIC_ROOT' must be set.")
