@@ -10,10 +10,11 @@ class BowerComponentsFinder(FileSystemFinder):
     """
     Find static files installed with npm and/or bower
     """
+    locations = []
 
     def __init__(self, apps=None, *args, **kwargs):
-        static_root = getattr(settings, 'STATIC_ROOT', '')
-        bower_components = os.path.abspath(os.path.join(static_root, 'bower_components'))
+        nodebow_root = getattr(settings, 'NODEBOW_ROOT', settings.STATIC_ROOT)
+        bower_components = os.path.abspath(os.path.join(nodebow_root, 'bower_components'))
         if not os.path.isdir(bower_components):
             return
         self.locations = [
