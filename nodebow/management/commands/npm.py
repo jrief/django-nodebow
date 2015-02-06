@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 import os
 import execjs
+from django.conf import settings
 from django.core.management.base import CommandError
-from nodebow import conf
 from ._base import BaseCommand
+from . import NODEBOW_ROOT
 
 
 class NPM(object):
@@ -32,10 +33,13 @@ class Command(BaseCommand):
         self.npm = NPM()
         super(Command, self).handle(*args, **options)
 
-    def install(self, node_settings):
+    def install(self, args):
+        node_settings = self._collect_settings(args)
+        if not os.path.isdir(NODEBOW_ROOT):
+            raise CommandError("The folder '{0}' does not exists")
+        self.stdout.write("Installing into {0}".format(os.path.join(NODEBOW_ROOT, 'node_modules')))
         curdir = os.getcwd()
-        self.stdout.write("Installing into {0}/node_modules".format(conf.PROJECT_PATH))
-        os.chdir(conf.PROJECT_PATH)
+        os.chdir(NODEBOW_ROOT)
         for app, settings in node_settings.items():
             dependencies = ['{0}#{1}'.format(p, v) for p, v in settings.get('dependencies', {}).items()]
             if self.verbosity > 0:
