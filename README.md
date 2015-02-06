@@ -1,6 +1,4 @@
-======================================================
-Manage bower components and node packages using Django
-======================================================
+# Manage bower components and node packages using Django
 
 Many Django applications require some JavaScript packages, which usually are not available on
 [PyPI](https://pypi.python.org/pypi) and thus can't be installed through **pip**. A common
@@ -22,8 +20,7 @@ The nice feature of **django-nodebow** is, that each Django application can spec
 packages it requires itself, without adding these to its own Git repository.
 
 
-Installation
-============
+## Installation
 
 Install [NodeJS](http://nodejs.org/download/).
 
@@ -44,8 +41,7 @@ Add ``bower_components/`` and ``node_packages/`` to the file ``.gitignore`` foun
 your Django project.
 
 
-Configuration
-=============
+## Configuration
 
 In ``settings.py``:
 
@@ -58,14 +54,13 @@ INSTALLED_APPS = (
 
 STATICFILES_FINDERS = (
     ...
-    'nodebow.finders.BowerComponentsFinder'
+    'nodebow.finders.BowerComponentsFinder',
     ...
 )
 ```
 
 
-Optional settings
------------------
+## Optional settings
 
 By default, the folders ``bower_components`` and/or ``node_packages`` are placed into the root
 of your Django project. By changing ``PROJECT_PATH``, these folder are placed below that
@@ -76,8 +71,7 @@ variable ``NODE_PATH``. This can be overridden by a settings variable with the s
 are unset, this location is determined by executing ``npm root -g`` in the shell.
 
 
-Usage
-=====
+## Usage
 
 To install all the bower components which are required for your Django project, simply invoke:
 
@@ -115,8 +109,9 @@ in any of your Django templates.
 
 As of version 0.0.1 ``./manage npm install``, currently does not work.
 
-Difference between Bower and NPM
-================================
+
+### Difference between Bower and NPM
+
 **npm** is most commonly used for managing Node.js modules, which run exclusively on the
 server-side.
 
@@ -132,3 +127,4 @@ Imagine a site having to download three copies of jQuery.
 
 The reason many projects use both is that they use Bower for front-end packages and npm for
 developer tools like SASS, LESS, Grunt, Gulp, JSHint, CoffeeScript, etc.
+
