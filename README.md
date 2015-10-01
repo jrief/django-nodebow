@@ -106,6 +106,25 @@ in any of your Django templates.
 
 As of version 0.0.1 ``./manage npm install``, currently does not work.
 
+### Serve unminimized version of static files
+
+In your HTML code, you normally refer to static files, such as
+
+```
+	<script src="{% static 'angular/angular.min.js' %}" type="text/javascript"></script>
+```
+
+this will load the minimized version of a file, which is appropriate in most circumstances. In
+DEBUG mode, one might prefer the unminimized version. Instead of changing the template code,
+add this to your ``settings.py``:
+
+```
+	NODEBOW_SERVE_UNMINIMIZED = DEBUG
+```
+
+Then all files referred as ``some-path.min.css`` or ``some-path.min.js`` will be served as their
+unminimized version if this exists in the same folder as the referred one.
+
 
 ### Difference between Bower and NPM
 
